@@ -17,32 +17,29 @@ export const FlowerDetail = () => {
 
   const getInfo = async () => {
     try {
-      const flowerData = await FlowersService.getAll();
+      const flowerData = await FlowersService.getProduct(id);
       setFlowers(flowerData);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const prodDetail = flowers.filter((x) => x.id === id);
-  const product = prodDetail[0];
-
   return (
     <section className={styles.flowerDetail}>
       <aside>
-        <img src={product?.imgUrl} alt={product?.name} title={product?.name} />
+        <img src={flowers?.imgUrl} alt={flowers?.name} title={flowers?.name} />
       </aside>
       <article>
         <NavLink to="/">
           <Button text="Atrás" />
         </NavLink>
 
-        <h2>{product?.name}</h2>
-        <p>{product?.binomialName}</p>
-        <p>{product?.fertilizerType}</p>
-        <p>{product?.heightInCm}</p>
-        <p>{product?.price}</p>
-        <p>{product?.wateringsPerWeek}</p>
+        <h2>{flowers?.name}</h2>
+        <p>{flowers?.binomialName}</p>
+        <p>{flowers?.fertilizerType}</p>
+        <p>{flowers?.heightInCm}</p>
+        <p>{flowers?.price}</p>
+        <p>{flowers?.wateringsPerWeek}</p>
       </article>
     </section>
   );
